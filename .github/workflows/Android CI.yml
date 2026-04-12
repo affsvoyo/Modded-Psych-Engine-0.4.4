@@ -33,7 +33,24 @@ jobs:
         run: |
           haxelib setup C:/haxelib
           haxelib install hxcpp > /dev/null --quiet
-          .\"setup/compiler.sh"
+          haxelib install flixel
+          haxelib install flixel-addons
+          haxelib install hscript
+          haxelib install flixel-ui
+          haxelib install actuate
+          haxelib install extension-webm
+          haxelib install linc_luajit
+          haxelib install extension-webm
+          haxelib install linc_luajit
+          haxelib install hxCodec
+          haxelib install hxvlc
+          haxelib install hxjsonast
+          haxelib install format
+          haxelib install polymod
+          haxelib install thx.core
+          haxelib install tink_core
+          haxelib install msignal
+          haxelib install newgrounds
           haxelib run lime setup android
         shell: cmd
       - name: Skip SScript setup mode
