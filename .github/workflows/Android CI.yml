@@ -45,6 +45,7 @@ jobs:
           haxelib install openfl-samples
           haxelib install extension-webm
           haxelib install extension-webview
+          haxelib install hxvm-luajit
 
       - name: Setup Android
         run: |
