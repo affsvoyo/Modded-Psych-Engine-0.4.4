@@ -1,34 +1,23 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Android CI
 
-
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ main, experimental ]
   pull_request:
     branches: [ main, experimental ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  
   buildAndroid:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@main
 
       - uses: krdlab/setup-haxe@master
         with:
           haxe-version: 4.3.4
-      # Runs a set of commands using the runners shell
+
       - name: Install Haxelib
         run: |
           haxelib install hxcpp
@@ -37,8 +26,6 @@ jobs:
           haxelib install hscript
           haxelib install flixel-ui
           haxelib install actuate
-          haxelib install extension-webm
-          haxelib install linc_luajit
           haxelib install extension-webm
           haxelib install linc_luajit
           haxelib install hxCodec
@@ -53,13 +40,18 @@ jobs:
           haxelib install openfl
           haxelib install lime
           haxelib install flixel-tools
+
+      - name: Setup Android
+        run: |
           haxelib run lime setup android
 
       - name: Create Version Tag
-        run: echo "${{github.run_id}}" > VERSION
+        run: echo "${{ github.run_id }}" > VERSION
+
       - name: Compile
-        run: haxelib run lime build android --app-version="4.0.0-${{ github.run_id}}"  -D officialBuild
-     - name: Publish Artifact
+        run: haxelib run lime build android --app-version="4.0.0-${{ github.run_id }}" -D officialBuild
+
+      - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
           name: androidBuild
