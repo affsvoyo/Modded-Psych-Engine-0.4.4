@@ -21,25 +21,28 @@ jobs:
       - name: Install Haxelib
         run: |
           haxelib install hxcpp
+          haxelib install lime
+          haxelib install openfl
           haxelib install flixel
-          haxelib install flixel-addons
-          haxelib install hscript
+          haxelib install flixel-tools
           haxelib install flixel-ui
+          haxelib install flixel-addons
           haxelib install actuate
-          haxelib install extension-webm
-          haxelib install linc_luajit
-          haxelib install hxCodec
-          haxelib install hxvlc
-          haxelib install hxjsonast
-          haxelib install format
+          haxelib install hscript
           haxelib install polymod
+          haxelib install format
           haxelib install thx.core
           haxelib install tink_core
           haxelib install msignal
-          haxelib install newgrounds
-          haxelib install openfl
-          haxelib install lime
-          haxelib install flixel-tools
+          haxelib install hxjsonast
+          haxelib install hxCodec
+          haxelib install hxvlc
+          haxelib install extension-webm
+          haxelib install linc_luajit
+          haxelib install discord_rpc
+          haxelib install json2object
+          haxelib install lime-samples
+          haxelib install openfl-samples
 
       - name: Setup Android
         run: |
@@ -56,14 +59,19 @@ jobs:
         with:
           name: androidBuild
           path: export/release/android/bin/
-    EchoTest:
+
+  EchoTest:
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@main
 
       - name: Test Echo
         run: |
-           echo "Tested Echo"
+          echo "Tested Echo"
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
+        with:
+          name: echo-log
+          path: .
