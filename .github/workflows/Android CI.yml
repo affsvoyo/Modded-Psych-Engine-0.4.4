@@ -43,6 +43,7 @@ jobs:
           haxelib install json2object
           haxelib install lime-samples
           haxelib install openfl-samples
+          haxelib install extension-webm
 
       - name: Setup Android
         run: |
