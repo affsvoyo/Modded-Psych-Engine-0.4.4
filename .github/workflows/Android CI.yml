@@ -53,8 +53,6 @@ jobs:
           haxelib install openfl
           haxelib install lime
           haxelib install flixel-tools
-          haxelib run lime setup
-          haxelib run flixel setup
           haxelib run lime setup android
 
       - name: Create Version Tag
