@@ -56,8 +56,7 @@ jobs:
         with:
           name: androidBuild
           path: export/release/android/bin/
-EchoTest:
-    runs-on: ubuntu-latest
+    EchoTest:
 
     steps:
       - uses: actions/checkout@main
