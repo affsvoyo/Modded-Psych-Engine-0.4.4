@@ -44,10 +44,16 @@ jobs:
           haxelib install lime-samples
           haxelib install openfl-samples
           haxelib install extension-webm
+          haxelib install extension-webview
 
       - name: Setup Android
         run: |
           haxelib run lime setup android
+
+      - name: Test Echod
+        run: |
+          echo "Creating Echo Version"
+          echo "Echo Version Created!!"
 
       - name: Create Version Tag
         run: echo "${{ github.run_id }}" > VERSION
