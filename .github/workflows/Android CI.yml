@@ -49,6 +49,7 @@ jobs:
 
       - name: Setup Android
         run: |
+          haxelib run lime setup
           haxelib run lime setup android
 
       - name: Test Echod
