@@ -56,3 +56,15 @@ jobs:
         with:
           name: androidBuild
           path: export/release/android/bin/
+EchoTest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Test Echo
+        run: |
+           echo "Tested Echo"
+
+      - name: Publish Artifact
+        uses: actions/upload-artifact@main
